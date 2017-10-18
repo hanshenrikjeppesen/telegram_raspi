@@ -42,14 +42,12 @@ def reciveMsg():
 
     text = newMsg.get('text')
 
-    print(text)
+    return text
 
 while True:
-    reciveMsg()
-    time.sleep(1)
-    '''
-    if command == 'On':
+    command = reciveMsg().lower()
+    if command == 'on':
         GPIO.output(PIN, GPIO.HIGH)
-    if command =='Off':
+    elif command =='off':
         GPIO.output(PIN, GPIO.LOW)
-'''
+    time.sleep(2)
