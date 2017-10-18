@@ -51,7 +51,7 @@ def reciveMsg():
 while True:
     command = reciveMsg().lower()
     print(measure_temp())
-    print(type(measure_temp())
+    print(type(measure_temp()))
     if command == 'on':
         GPIO.output(PIN, GPIO.HIGH)
     elif command =='off':
