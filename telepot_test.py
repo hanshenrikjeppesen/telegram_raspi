@@ -71,8 +71,8 @@ while True:
             GPIO.output(PIN, GPIO.LOW)
             time.sleep(0.1)
     if command == 'temp':
-        bot.sendMessage(id, 'Hey')
-
+        # bot.sendMessage(id, 'Hey')
+        pass
 
 
     time.sleep(2)
