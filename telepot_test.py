@@ -52,9 +52,10 @@ def reciveMsg():
 
 while True:
     command = reciveMsg().lower()
+
     temp = measure_temp()
-    print(temp)
-    print(type(temp))
+    if temp > 60:
+        sys.exit()
 
     if command == 'on':
         GPIO.output(PIN, GPIO.HIGH)
