@@ -9,10 +9,10 @@ import RPi.GPIO as GPIO
 
 #LED
 def on(pin):
-    GPIO.output(pin,GPIO.HIGH)
+    GPIO.output(pin,GPIO.TRUE)
     return
 def off(pin):
-    GPIO.output(pin,GPIO.LOW)
+    GPIO.output(pin,GPIO.FALSE)
     return
 
 # to use Raspberry Pi board pin numbers
