@@ -27,7 +27,7 @@ def handle(msg):
     chat_id = msg['chat']['id']
     command = msg['text']
 
-    print ('Got command: {}'.format(command))
+    # print ('Got command: {}'.format(command))
     return command
     if command == 'On':
         GPIO.output(PIN, GPIO.HIGH)
@@ -35,7 +35,9 @@ def handle(msg):
         GPIO.output(PIN, GPIO.LOW)
 
 bot = telepot.Bot('479647911:AAF3lzp-5g9G-VBkU31duAMwWsTVHnmUzBA')
-bot.message_loop(handle)
+
 print ('I am listening...')
-while 1:
-     time.sleep(10)
+while True:
+    message = bot.message_loop(handle)
+    print(message)
+    time.sleep(10)
