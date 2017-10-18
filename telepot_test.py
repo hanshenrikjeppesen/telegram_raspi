@@ -9,7 +9,7 @@ import RPi.GPIO as GPIO
 
 #LED
 def on(pin):
-    GPIO.output(pin,GPIO.TRUE)
+    GPIO.output(pin, GPIO.TRUE)
     return
 def off(pin):
     GPIO.output(pin,GPIO.FALSE)
@@ -17,6 +17,7 @@ def off(pin):
 
 # to use Raspberry Pi board pin numbers
 GPIO.setmode(GPIO.BCM)
+GPIO.setwarnings(False)
 
 # set up GPIO output channel
 GPIO.setup(14, GPIO.OUT)
@@ -28,9 +29,9 @@ def handle(msg):
     print ('Got command: {}'.format(command))
 
     if command == 'on':
-        on(14)
-    elif command =='off':
-        off(14)
+        GPIO.output(14, GPIO.TRUE)
+    if command =='off':
+        GPIO.output(14, GPIO.FALSE)
 
 bot = telepot.Bot('479647911:AAF3lzp-5g9G-VBkU31duAMwWsTVHnmUzBA')
 bot.message_loop(handle)
