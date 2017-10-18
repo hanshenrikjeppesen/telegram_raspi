@@ -47,12 +47,13 @@ def reciveMsg():
     newMsg = msg.get('message')
 
     text = newMsg.get('text')
+    name = newMsg.get('first_name')
+    id = newMsg.get('id')
 
-    return text
+    return [name, id, text]
 
 while True:
-    command = reciveMsg().lower()
-
+    name, id, command = reciveMsg().lower()
     temp = measure_temp()
     if temp > 60:
         sys.exit()
@@ -67,5 +68,7 @@ while True:
             time.sleep(0.1)
             GPIO.output(PIN, GPIO.LOW)
             time.sleep(0.1)
+
+
 
     time.sleep(2)
