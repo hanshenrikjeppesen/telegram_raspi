@@ -32,7 +32,17 @@ def reciveMsg():
         sys.exc_clear()
 
     numOfIncomming = len(incomming)
-    print(numOfIncomming)
+
+    if numOfIncomming > 1:
+        msg = incomming[numOfIncomming - 1]
+    else:
+        msg = incomming[0]
+
+    newMsg = msg.Get('message')
+
+    text = newMsg.get('text')
+
+    print(text)
 
 while True:
     reciveMsg()
