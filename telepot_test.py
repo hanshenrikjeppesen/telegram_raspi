@@ -38,7 +38,7 @@ def reciveMsg():
     else:
         msg = incomming[0]
 
-    newMsg = msg.Get('message')
+    newMsg = msg.get('message')
 
     text = newMsg.get('text')
 
