@@ -58,18 +58,21 @@ while True:
     temp = measure_temp()
     if temp > 60:
         sys.exit()
-
-    if command == 'on':
-        GPIO.output(PIN, GPIO.HIGH)
-    elif command =='off':
-        GPIO.output(PIN, GPIO.LOW)
-    elif command == 'blink':
-        for i in range(10):
+    if command != oldCommand:
+        if command == 'on':
             GPIO.output(PIN, GPIO.HIGH)
-            time.sleep(0.1)
+            oldCommand = command
+        elif command =='off':
             GPIO.output(PIN, GPIO.LOW)
-            time.sleep(0.1)
-    if command == 'temp':
-        bot.sendMessage(id, 'Hey ' + name + ' Temp of CPU on Raspi is.: ' + str(temp) + 'C')
-
+            oldCommand = command
+        elif command == 'blink':
+            for i in range(10):
+                GPIO.output(PIN, GPIO.HIGH)
+                time.sleep(0.1)
+                GPIO.output(PIN, GPIO.LOW)
+                time.sleep(0.1)
+                oldCommand = command
+        if command == 'temp':
+            bot.sendMessage(id, 'Hey ' + name + ' Temp of CPU on Raspi is.: ' + str(temp) + 'C')
+            oldCommand = command
     time.sleep(2)
