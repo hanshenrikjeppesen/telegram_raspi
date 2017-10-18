@@ -2,8 +2,7 @@
 
 import sys
 import time
-import random
-import datetime
+import os
 import telepot
 import RPi.GPIO as GPIO
 
@@ -24,6 +23,11 @@ PIN = 23
 GPIO.setup(PIN, GPIO.OUT)
 
 bot = telepot.Bot('479647911:AAF3lzp-5g9G-VBkU31duAMwWsTVHnmUzBA')
+
+
+def measure_temp():
+    temp = os.popen("vcgencmd measure_temp").readline()
+    return (temp.replace("temp=", ""))
 
 def reciveMsg():
     try:
@@ -46,6 +50,8 @@ def reciveMsg():
 
 while True:
     command = reciveMsg().lower()
+    print(measure_temp())
+    print(type(measure_temp())
     if command == 'on':
         GPIO.output(PIN, GPIO.HIGH)
     elif command =='off':
@@ -56,5 +62,5 @@ while True:
             time.sleep(0.1)
             GPIO.output(PIN, GPIO.LOW)
             time.sleep(0.1)
-            command = 'off'
+
     time.sleep(2)
