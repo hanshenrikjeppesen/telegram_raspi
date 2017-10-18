@@ -18,6 +18,7 @@ def off(pin):
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 PIN = 23
+oldCommand = 'off'
 
 # set up GPIO output channel
 GPIO.setup(PIN, GPIO.OUT)
@@ -53,7 +54,8 @@ def reciveMsg():
 
     return [name, id, text]
 
-    oldCommand = 'off'
+
+
 while True:
     name, id, command = reciveMsg()
     temp = measure_temp()
