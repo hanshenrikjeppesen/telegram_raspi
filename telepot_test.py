@@ -18,7 +18,7 @@ def off(pin):
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 PIN = 23
-oldCommand = 'off'
+oldCommand = 'qwerty'
 
 # set up GPIO output channel
 GPIO.setup(PIN, GPIO.OUT)
