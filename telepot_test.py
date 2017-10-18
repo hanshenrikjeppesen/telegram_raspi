@@ -29,9 +29,9 @@ def handle(msg):
     print ('Got command: {}'.format(command))
 
     if command == 'on':
-        GPIO.output(14, GPIO.TRUE)
+        GPIO.output(14, GPIO.HIGH)
     if command =='off':
-        GPIO.output(14, GPIO.FALSE)
+        GPIO.output(14, GPIO.LOW)
 
 bot = telepot.Bot('479647911:AAF3lzp-5g9G-VBkU31duAMwWsTVHnmUzBA')
 bot.message_loop(handle)
