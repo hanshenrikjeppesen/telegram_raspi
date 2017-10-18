@@ -50,4 +50,10 @@ while True:
         GPIO.output(PIN, GPIO.HIGH)
     elif command =='off':
         GPIO.output(PIN, GPIO.LOW)
+    elif command == 'blink':
+        for i in range(10):
+            GPIO.output(PIN, GPIO.HIGH)
+            time.sleep(0.1)
+            GPIO.output(PIN, GPIO.LOW)
+            time.sleep(0.1)
     time.sleep(2)
