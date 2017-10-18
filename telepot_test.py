@@ -56,4 +56,5 @@ while True:
             time.sleep(0.1)
             GPIO.output(PIN, GPIO.LOW)
             time.sleep(0.1)
+            command = 'off'
     time.sleep(2)
