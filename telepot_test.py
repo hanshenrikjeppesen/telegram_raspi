@@ -36,7 +36,7 @@ def reciveMsg():
 
 while True:
     reciveMsg()
-    time.sleep(1000)
+    time.sleep(1)
     '''
     if command == 'On':
         GPIO.output(PIN, GPIO.HIGH)
