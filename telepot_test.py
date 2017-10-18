@@ -53,6 +53,7 @@ def reciveMsg():
 
     return [name, id, text]
 
+    oldCommand = 'off'
 while True:
     name, id, command = reciveMsg()
     temp = measure_temp()
