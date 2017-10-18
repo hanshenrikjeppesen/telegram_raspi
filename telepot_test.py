@@ -9,10 +9,10 @@ import RPi.GPIO as GPIO
 
 #LED
 def on(pin):
-    GPIO.output(pin, GPIO.TRUE)
+    GPIO.output(pin, GPIO.HIGH)
     return
 def off(pin):
-    GPIO.output(pin,GPIO.FALSE)
+    GPIO.output(pin,GPIO.LOW)
     return
 
 # to use Raspberry Pi board pin numbers
@@ -23,21 +23,23 @@ PIN = 23
 # set up GPIO output channel
 GPIO.setup(PIN, GPIO.OUT)
 
-def handle(msg):
-    chat_id = msg['chat']['id']
-    command = msg['text']
+bot = telepot.Bot('479647911:AAF3lzp-5g9G-VBkU31duAMwWsTVHnmUzBA')
 
-    # print ('Got command: {}'.format(command))
-    return command
+def reciveMsg():
+    try:
+        incomming = bot.getUpdates()
+    except Exception:
+        sys.exc_clear()
+
+    numOfIncomming = len(incomming)
+    print(numOfIncomming)
+
+while True:
+    reciveMsg()
+    time.sleep(1000)
+    '''
     if command == 'On':
         GPIO.output(PIN, GPIO.HIGH)
     if command =='Off':
         GPIO.output(PIN, GPIO.LOW)
-
-bot = telepot.Bot('479647911:AAF3lzp-5g9G-VBkU31duAMwWsTVHnmUzBA')
-
-print ('I am listening...')
-while True:
-    message = bot.message_loop(handle)
-    print(message)
-    time.sleep(10)
+'''
