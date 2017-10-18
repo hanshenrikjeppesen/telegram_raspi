@@ -56,7 +56,6 @@ while True:
     print(temp)
     print(type(temp))
 
-    if temp >
     if command == 'on':
         GPIO.output(PIN, GPIO.HIGH)
     elif command =='off':
