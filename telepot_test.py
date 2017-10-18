@@ -46,14 +46,14 @@ def reciveMsg():
 
     newMsg = msg.get('message')
 
-    text = newMsg.get('text')
+    text = newMsg.get('text').lower()
     name = newMsg.get('first_name')
     id = newMsg.get('id')
 
     return [name, id, text]
 
 while True:
-    name, id, command = reciveMsg().lower()
+    name, id, command = reciveMsg()
     temp = measure_temp()
     if temp > 60:
         sys.exit()
