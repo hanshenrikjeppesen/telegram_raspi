@@ -27,7 +27,7 @@ def handle(msg):
     command = msg['text']
 
     print ('Got command: {}'.format(command))
-
+    return command
     if command == 'on':
         GPIO.output(14, GPIO.HIGH)
     if command =='off':
