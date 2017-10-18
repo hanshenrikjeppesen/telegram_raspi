@@ -45,10 +45,11 @@ def reciveMsg():
         msg = incomming[0]
 
     newMsg = msg.get('message')
-
     text = newMsg.get('text').lower()
-    name = newMsg.get('first_name')
-    id = newMsg.get('id')
+
+    p = newMsg.get('from')
+    id = p.get('id')
+    name = p.get('first_name')
 
     return [name, id, text]
 
@@ -73,6 +74,5 @@ while True:
     if command == 'temp':
         # bot.sendMessage(id, 'Hey')
         pass
-
 
     time.sleep(2)
