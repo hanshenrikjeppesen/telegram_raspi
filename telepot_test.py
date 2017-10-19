@@ -90,6 +90,6 @@ while True:
                 bot.sendMessage(id, 'Hey ' + name + ' sorry, someone is making coffe, call shotgun')
                 oldCommand = command
             else:
-                bot.sendMessage(id, 'Hey ' + name + " It's coffeTime!!!")
+                bot.sendMessage(id, 'Hey ' + name + " It's CoffeeTime!!!")
                 oldCommand = command
     time.sleep(2)
