@@ -23,8 +23,10 @@ oldCommand = 'qwerty'
 # set up GPIO output channel
 GPIO.setup(PIN, GPIO.OUT)
 
-bot = telepot.Bot('479647911:AAF3lzp-5g9G-VBkU31duAMwWsTVHnmUzBA')
+with open('/home/pi/token.txt', 'r') as f:
+    readToken = f.readline()
 
+bot = telepot.Bot(readToken)
 
 def measure_temp():
     temp = os.popen("vcgencmd measure_temp").readline()
