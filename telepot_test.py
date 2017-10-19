@@ -81,4 +81,7 @@ while True:
         if command == 'temp':
             bot.sendMessage(id, 'Hey ' + name + ' Temp of CPU on Raspi is.: ' + str(temp) + 'C')
             oldCommand = command
+        if command == 'coffee':
+            bot.sendMessage(id, 'Hey ' + name + ' we are not ready yet, but we are working hard, tune in soon')
+            oldCommand = command
     time.sleep(2)
