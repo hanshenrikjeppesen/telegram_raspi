@@ -23,11 +23,11 @@ def LEDblink():
 # to use Raspberry Pi board pin numbers
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
-PIN = 23
 oldCommand = 'qwerty'
 
 # set up GPIO output channel
-GPIO.setup(PIN, GPIO.OUT)
+GPIO.setup(23, GPIO.OUT)
+GPIO.setup(14, GPIO.IN)
 
 # with open('/home/pi/token.txt', 'r') as f:
   #  readToken = f.readline()
@@ -62,12 +62,14 @@ def reciveMsg():
 
     return [name, id, text]
 
-
+def measure_sound():
+    sound = GPIO.input(14)
+    return sound
 
 while True:
     name, id, command = reciveMsg()
-    print(name, id, command)
     temp = measure_temp()
+    coffeeTime = measure_sound()
     if temp > 60:
         sys.exit()
     if command != oldCommand:
@@ -84,6 +86,9 @@ while True:
             bot.sendMessage(id, 'Hey ' + name + ' Temp of CPU on Raspi is.: ' + str(temp) + 'C')
             oldCommand = command
         if command == 'coffee':
-            bot.sendMessage(id, 'Hey ' + name + ' we are not ready yet, but we are working hard, tune in soon')
+            if coffeeTime == 1:
+                bot.sendMessage(id, 'Hey ' + name + ' sorry, someone is making coffe, call shotgun')
+        else:
+            bot.sendMessage(id, 'Hey ' + name + " It's coffeTime!!!")
             oldCommand = command
     time.sleep(2)
