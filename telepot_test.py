@@ -58,6 +58,7 @@ def reciveMsg():
 
 while True:
     name, id, command = reciveMsg()
+    print(name, id, command)
     temp = measure_temp()
     if temp > 60:
         sys.exit()
