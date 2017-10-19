@@ -15,9 +15,9 @@ def LEDoff():
     return
 def LEDblink():
     for i in range(10):
-        GPIO.output(PIN, GPIO.HIGH)
+        GPIO.output(23, GPIO.HIGH)
         time.sleep(0.05)
-        GPIO.output(PIN, GPIO.LOW)
+        GPIO.output(23, GPIO.LOW)
         time.sleep(0.05)
 
 # to use Raspberry Pi board pin numbers
