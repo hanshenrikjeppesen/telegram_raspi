@@ -88,7 +88,8 @@ while True:
         if command == 'coffee':
             if coffeeTime == 1:
                 bot.sendMessage(id, 'Hey ' + name + ' sorry, someone is making coffe, call shotgun')
-        else:
-            bot.sendMessage(id, 'Hey ' + name + " It's coffeTime!!!")
-            oldCommand = command
+                oldCommand = command
+            else:
+                bot.sendMessage(id, 'Hey ' + name + " It's coffeTime!!!")
+                oldCommand = command
     time.sleep(2)
