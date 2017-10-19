@@ -7,12 +7,18 @@ import telepot
 import RPi.GPIO as GPIO
 
 #LED
-def on(pin):
-    GPIO.output(pin, GPIO.HIGH)
+def LEDon():
+    GPIO.output(23, GPIO.HIGH)
     return
-def off(pin):
-    GPIO.output(pin,GPIO.LOW)
+def LEDoff():
+    GPIO.output(23,GPIO.LOW)
     return
+def LEDblink():
+    for i in range(10):
+        GPIO.output(PIN, GPIO.HIGH)
+        time.sleep(0.05)
+        GPIO.output(PIN, GPIO.LOW)
+        time.sleep(0.05)
 
 # to use Raspberry Pi board pin numbers
 GPIO.setmode(GPIO.BCM)
@@ -38,7 +44,7 @@ def reciveMsg():
     try:
         incomming = bot.getUpdates()
     except Exception:
-        sys.exc_clear()
+        pass
 
     numOfIncomming = len(incomming)
 
@@ -66,18 +72,14 @@ while True:
         sys.exit()
     if command != oldCommand:
         if command == 'on':
-            GPIO.output(PIN, GPIO.HIGH)
+            LEDon()
             oldCommand = command
         elif command =='off':
-            GPIO.output(PIN, GPIO.LOW)
+            LEDoff()
             oldCommand = command
-        elif command == 'blink':
-            for i in range(10):
-                GPIO.output(PIN, GPIO.HIGH)
-                time.sleep(0.1)
-                GPIO.output(PIN, GPIO.LOW)
-                time.sleep(0.1)
-                oldCommand = command
+        elif command == 'shotgun':
+            LEDblink()
+            oldCommand = command
         if command == 'temp':
             bot.sendMessage(id, 'Hey ' + name + ' Temp of CPU on Raspi is.: ' + str(temp) + 'C')
             oldCommand = command
